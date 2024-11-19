@@ -29,6 +29,8 @@ app.post("/books/borrow", (req, res) => {
     if (book) {
         book.isAvailable = false;
         res.send(`Borrowed "${book.title}"`);
+    } else {
+        res.send(`"${title}" not available`);
     }
 });
 
@@ -38,6 +40,8 @@ app.post("/books/return", (req, res) => {
     if (book) {
         book.isAvailable = true;
         res.send(`Returned "${book.title}"`);
+    } else {
+        res.send(`"${title}" not borrowed`);
     }
 });
 
